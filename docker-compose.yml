@@ -1,0 +1,33 @@
+version: '2'
+services:
+  database:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRESS_PASSWORD=postgres
+      - POSTGRES_DB=todo
+    ports:
+      - "5432:5432"
+    networks:
+      - back
+  todo:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - DATABASE_CONN=postgres://postgres:postgres@database:5432/todo?sslmode=disable
+      - AUTOMIGRATE=true
+    ports:
+      - "8090:8090"
+    depends_on:
+      - database
+    networks:
+      - back
+      - front
+networks:
+  front:
+     driver: bridge
+
+  back:
+     driver: bridge
+
