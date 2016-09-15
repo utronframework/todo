@@ -50,6 +50,9 @@ to see your toto-list application
 
 If you find this helpful, please [follow the author](https://github.com/gernest)
 
+# screen shot
+![todo app with utron](screenshot.png)
+
 nd start this project.
 
 # LICENSE
