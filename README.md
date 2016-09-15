@@ -2,18 +2,55 @@
 
 Todo list application using [utron](https://github.com/gernest/utron)
 
-This uses docke-compose to rune the application
+This shows how you can get started using the utron web framework.
 
-# Usage
+# Installation
 
-clone this repo somewhere and run the following command at the root of the
-repository
+You will need to have a working Go environment
 
-```bash
+``` bash
+ go get github.com/gernest/utron-todo
+```
+
+
+To run the applications, move to the root of the package
+```
+ cd $GOPATH/github.com/gernest/utron-todo
+```
+
+You can now edit `config/app.json` to suit your needs. The database is required,
+so you can use a postgresql,mysql or sqlite database.
+
+When you are happy with the configurations then you can run the application by
+```
+utron-todo
+```
+
+Visit localhost:8080 if you didnt choose another port in the configuration file
+to see your toto-list application
+
+
+## ALternatively with docker-compose
+
+If you have docker and docker-compose. There is a `docker-compose.yml` file that
+will setup everything for you, like postgresql database and also build the app
+for you.
+
+```
+git clone git@github.com:gernest/utron-todo.git
+
+cd utron-app
 docker-compose up -d
 ```
 
-Then visit localhost:8090
+Visit localhost:8080 if you didnt choose another port in the configuration file
+to see your toto-list application
 
+#Shamless plug
 
+If you find this helpful, please [follow the author](https://github.com/gernest)
 
+nd start this project.
+
+# LICENSE
+MIT

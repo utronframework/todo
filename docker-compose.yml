@@ -24,6 +24,8 @@ services:
     networks:
       - back
       - front
+    volumes:
+      - ./views:/go/src/github.com/gernest/utron-todo/views
 networks:
   front:
      driver: bridge
