@@ -4,21 +4,21 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/gernest/utron"
-	"github.com/gernest/utron-todo/models"
+	"github.com/gernest/utron/controller"
 	"github.com/gorilla/schema"
+	"github.com/utronframework/todo/models"
 )
 
 var decoder = schema.NewDecoder()
 
-//TODO is a controller for Todo list
-type TODO struct {
-	*utron.BaseController
+//Todo is a controller for Todo list
+type Todo struct {
+	controller.BaseController
 	Routes []string
 }
 
 //Home renders a todo list
-func (t *TODO) Home() {
+func (t *Todo) Home() {
 	todos := []*models.Todo{}
 	t.Ctx.DB.Order("created_at desc").Find(&todos)
 	t.Ctx.Data["List"] = todos
@@ -27,7 +27,7 @@ func (t *TODO) Home() {
 }
 
 //Create creates a todo  item
-func (t *TODO) Create() {
+func (t *Todo) Create() {
 	todo := &models.Todo{}
 	req := t.Ctx.Request()
 	_ = req.ParseForm()
@@ -43,7 +43,7 @@ func (t *TODO) Create() {
 }
 
 //Delete deletes a todo item
-func (t *TODO) Delete() {
+func (t *Todo) Delete() {
 	todoID := t.Ctx.Params["id"]
 	ID, err := strconv.Atoi(todoID)
 	if err != nil {
@@ -56,17 +56,13 @@ func (t *TODO) Delete() {
 	t.Ctx.Redirect("/", http.StatusFound)
 }
 
-//NewTODO returns a new  todo list controller
-func NewTODO() *TODO {
-	return &TODO{
+//NewTodo returns a new  todo list controller
+func NewTodo() *Todo {
+	return &Todo{
 		Routes: []string{
 			"get;/;Home",
 			"post;/create;Create",
 			"get;/delete/{id};Delete",
 		},
 	}
-}
-
-func init() {
-	utron.RegisterController(NewTODO())
 }
