@@ -6,7 +6,6 @@ import (
 	"net/http"
 
 	"github.com/gernest/utron"
-	"github.com/gernest/utron/controller"
 	c "github.com/utronframework/todo/controllers"
 	"github.com/utronframework/todo/models"
 )
@@ -16,8 +15,10 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println(app.View == nil)
 	app.Model.Register(&models.Todo{})
-	app.AddController(controller.GetCtrlFunc(&c.Todo{}))
+	app.Model.AutoMigrateAll()
+	app.AddController(c.NewTodo)
 	port := fmt.Sprintf(":%d", app.Config.Port)
 	log.Fatal(http.ListenAndServe(port, app))
 }

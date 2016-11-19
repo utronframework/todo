@@ -6,5 +6,5 @@
 	"static_dir": "static",
 	"view_dir": "views",
 	"database": "postgres",
-	"database_conn": "postgres://postgres:postgres@localhost/todo"
+	"database_conn": "postgres://postgres:postgres@localhost/todo?sslmode=disable"
 }
