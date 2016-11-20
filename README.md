@@ -23,7 +23,7 @@ so you can use a postgresql,mysql or sqlite database.
 
 When you are happy with the configurations then you can run the application by
 ```
-utron-todo
+.todo
 ```
 
 Visit localhost:8080 if you didnt choose another port in the configuration file
