@@ -9,13 +9,13 @@ This shows how you can get started using the utron web framework.
 You will need to have a working Go environment
 
 ``` bash
- go get github.com/gernest/utron-todo
+go get github.com/utronframework/todo
 ```
 
 
 To run the applications, move to the root of the package
 ```
- cd $GOPATH/github.com/gernest/utron-todo
+ cd $GOPATH/github.com/utronframework/todo
 ```
 
 You can now edit `config/app.json` to suit your needs. The database is required,
@@ -37,9 +37,9 @@ will setup everything for you, like postgresql database and also build the app
 for you.
 
 ```
-git clone git@github.com:gernest/utron-todo.git
+git clone git@github.com:utronframework/todo.git
 
-cd utron-app
+cd todo
 docker-compose up -d
 ```
 
