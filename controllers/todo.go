@@ -57,7 +57,7 @@ func (t *Todo) Delete() {
 }
 
 //NewTodo returns a new  todo list controller
-func NewTodo() *Todo {
+func NewTodo() controller.Controller {
 	return &Todo{
 		Routes: []string{
 			"get;/;Home",
